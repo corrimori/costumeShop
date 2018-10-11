@@ -5,8 +5,8 @@ const ctrl = require('../controllers/costumes')
 router.get('/', ctrl.getAllCostumes)
 router.get('/:id', ctrl.getCostumeById)
 router.post('/', ctrl.createCostume)
-// router.put('/:id', ctrl.updateCostume)
-// router.delete(':id', ctrl.deleteCostumeById)
+router.put('/:id', ctrl.updateCostume)
+router.delete('/:id', ctrl.deleteCostumeById)
 
 // tag routes go thru costumes
 // router.get('/:id/tags/:id', ctrlTags.getTagById)

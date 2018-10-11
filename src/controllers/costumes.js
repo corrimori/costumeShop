@@ -38,36 +38,36 @@ createCostume = (req, res, next) => {
   })
 }
 
-// updateCostume = (req, res, next) => {
-//   let id = req.params.id
-//   let promise = model.updateCostume(id, req.body)
-//
-//   promise.then(result => {
-//     return result.error ? next(result) : res.status(200).json(result)
-//   })
-//
-//   promise.catch(error => {
-//     next(error)
-//   })
-// }
-//
-// deleteCostumeById = (req, res, next) => {
-//   let id = req.params.id
-//   let promise = model.deleteCostumeById(id)
-//
-//   promise.then(result => {
-//     return result.error ? next(result) : res.status(204).json(result)
-//   })
-//
-//   promise.catch(error => {
-//     next(error)
-//   })
-// }
+updateCostume = (req, res, next) => {
+  let id = req.params.id
+  let promise = model.updateCostume(id, req.body)
+
+  promise.then(result => {
+    return result.error ? next(result) : res.status(200).json(result)
+  })
+
+  promise.catch(error => {
+    next(error)
+  })
+}
+
+deleteCostumeById = (req, res, next) => {
+  let id = req.params.id
+  let promise = model.deleteCostumeById(id)
+
+  promise.then(result => {
+    return result.error ? next(result) : res.status(204).json(result)
+  })
+
+  promise.catch(error => {
+    next(error)
+  })
+}
 
 module.exports = {
   getAllCostumes,
   getCostumeById,
-  createCostume
-  // updateCostume,
-  // deleteCostumeById
+  createCostume,
+  updateCostume,
+  deleteCostumeById
 }
