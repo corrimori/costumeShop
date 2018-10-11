@@ -12,6 +12,9 @@ app.use(cors())
 const costumeRoutes = require('./src/routes/costumes.js')
 app.use('/costumes', costumeRoutes)
 
+const tagRoutes = require('./src/routes/tags.js')
+app.use('/tags', tagRoutes)
+
 // any other route is not allowed
 app.all('*', (req, res, next) => res.sendStatus(404))
 
