@@ -51,9 +51,24 @@ editTag = (req, res, next) => {
   })
 }
 
+deleteTagById = (req, res, next) => {
+  let id = req.params.id
+  let promise = model.deleteTagById(id)
+
+  promise.then(result => {
+    return result.error ? next(result) :
+    res.status(204).json(result)
+  })
+
+  promise.catch(error => {
+    next(error)
+  })
+}
+
 module.exports = {
   getAllTags,
   getTagById,
   createTag,
-  editTag
+  editTag,
+  deleteTagById
 }

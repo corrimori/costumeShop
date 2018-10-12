@@ -24,10 +24,10 @@ createCostume = (body) => {
   //   knex.destroy();
   // })
   .catch((err) => {
-    console.error(err);
-    knex.destroy();
-    process.exit(1);
-  });
+    console.error(err)
+    knex.destroy()
+    process.exit(1)
+  })
 }
 
 updateCostume = (id, body) => {
@@ -46,10 +46,10 @@ updateCostume = (id, body) => {
   //   knex.destroy();
   // })
   .catch((err) => {
-    console.error(err);
-    knex.destroy();
-    process.exit(1);
-  });
+    console.error(err)
+    knex.destroy()
+    process.exit(1)
+  })
 }
 
 deleteCostumeById = (id) => {
@@ -63,10 +63,10 @@ deleteCostumeById = (id) => {
     //   knex.destroy();
     // })
     .catch((err) => {
-      console.error(err);
-      knex.destroy();
-      process.exit(1);
-    });
+      console.error(err)
+      knex.destroy()
+      process.exit(1)
+    })
 }
 
 module.exports = {

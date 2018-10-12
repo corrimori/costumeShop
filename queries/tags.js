@@ -32,15 +32,29 @@ editTag = (id, body) => {
   .returning('*')
 
   .catch((err) => {
-    console.error(err);
-    knex.destroy();
-    process.exit(1);
-  });
+    console.error(err)
+    knex.destroy()
+    process.exit(1)
+  })
+}
+
+deleteTagById = (id) => {
+  return knex('tags')
+  .where('id', id)
+  .del()
+  .returning('*')
+
+  .catch((err) => {
+    console.error(err)
+    knex.destroy()
+    process.exit(1)
+  })
 }
 
 module.exports = {
   getAllTags,
   getTagById,
   createTag,
-  editTag
+  editTag,
+  deleteTagById
 }

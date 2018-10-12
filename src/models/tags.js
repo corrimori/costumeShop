@@ -40,9 +40,20 @@ const editTag = (id, body) => {
   })
 }
 
+const deleteTagById = (id) => {
+  tag = tagsQuery.deleteTagById(id)
+
+  return tag.then(result => {
+    return !result
+    ? { error: 'error deleting tag', status: 500 }
+    : result
+  })
+}
+
 module.exports = {
   getAllTags,
   getTagById,
   createTag,
-  editTag
+  editTag,
+  deleteTagById
 }

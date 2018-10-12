@@ -57,7 +57,7 @@ const deleteCostumeById = (id) => {
 
   return costume.then(result => {
     return !result
-      ? { error: 'error updating costume', status: 500 }
+      ? { error: 'error deleting costume', status: 500 }
       : result
   })
 }

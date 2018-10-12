@@ -6,6 +6,6 @@ router.get('/', ctrlTags.getAllTags)
 router.get('/:id', ctrlTags.getTagById)
 router.post('/', ctrlTags.createTag)
 router.put('/:id', ctrlTags.editTag)
-// router.delete(':id', ctrlTags.deleteTagById)
+router.delete('/:id', ctrlTags.deleteTagById)
 
 module.exports = router
