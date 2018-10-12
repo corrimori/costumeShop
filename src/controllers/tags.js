@@ -25,27 +25,21 @@ getTagById = (req, res, next) => {
   })
 }
 
-// editTag = (req, res, next) => {
-//   let promise = model.editTag(
-//     req.params.id,
-//     req.body.name,
-//     req.body.color
-//   )
-//
-//   promise.then(result => {
-//     res.status(200).json({
-//       result,
-//       message: `Tag ${req.params.id} updated`
-//     })
-//   })
-//
-//   promise.catch(error => {
-//     res.status().json()
-//   })
-// }
+editTag = (req, res, next) => {
+  let id = req.params.id
+  let promise = model.editTag(id, req.body)
+
+  promise.then(result => {
+    return result.error ? next(result) : res.status(200).json(result)
+  })
+
+  promise.catch(error => {
+    next(error)
+  })
+}
 
 module.exports = {
   getAllTags,
-  getTagById
-  // editTag
+  getTagById,
+  editTag
 }
