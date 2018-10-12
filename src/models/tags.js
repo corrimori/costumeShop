@@ -20,6 +20,16 @@ const getTagById = (id) => {
   })
 }
 
+const createTag = (body) => {
+  tag = tagQuery.createTag(body)
+
+  return tag.then(result => {
+    return !result
+    ? { error: 'error creating tag', status: 500}
+    : result
+  })
+}
+
 const editTag = (id, body) => {
   tag = tagsQuery.editTag(id, body)
 
@@ -33,5 +43,6 @@ const editTag = (id, body) => {
 module.exports = {
   getAllTags,
   getTagById,
+  createTag,
   editTag
 }

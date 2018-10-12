@@ -8,6 +8,17 @@ getTagById = (id) => {
   return knex('tags').where('id', id)
 }
 
+createTag = (tag) => {
+  return knex('tags')
+  .insert(body).returning('*')
+
+  .catch((err) => {
+    console.error(err)
+    knex.destroy()
+    process.exit(1)
+  })
+}
+
 editTag = (id, body) => {
   return knex('tags')
   .where('id', id)
@@ -30,5 +41,6 @@ editTag = (id, body) => {
 module.exports = {
   getAllTags,
   getTagById,
+  createTag,
   editTag
 }

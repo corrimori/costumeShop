@@ -25,6 +25,19 @@ getTagById = (req, res, next) => {
   })
 }
 
+createCostume = (req, res, next) => {
+  let promise = model.createTag(req.body)
+
+  promise.then(result => {
+    return result.error ? next(result) :
+    res.status(200).json(result)
+  })
+
+  promise.catch(error => {
+    next(error)
+  })
+}
+
 editTag = (req, res, next) => {
   let id = req.params.id
   let promise = model.editTag(id, req.body)
@@ -41,5 +54,6 @@ editTag = (req, res, next) => {
 module.exports = {
   getAllTags,
   getTagById,
+  createTag,
   editTag
 }
