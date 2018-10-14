@@ -21,6 +21,17 @@ const getCostumeById = (id) => {
   })
 }
 
+const getCostumeWithNestedTags = () => {
+  costumes = costumesQuery.getCostumeWithNestedTags()
+  console.log('+++++++++++++ in models function')
+
+  return costume.then(result => {
+    return result.length < 1
+      ? { error: 'error retrieving costume', status: 404 }
+      : result
+  })
+}
+
 const createCostume = (body) => {
   console.log('body>>', body);
   costume = costumesQuery.createCostume(body)
@@ -65,6 +76,7 @@ const deleteCostumeById = (id) => {
 module.exports = {
   getAllCostumes,
   getCostumeById,
+  getCostumeWithNestedTags,
   createCostume,
   updateCostume,
   deleteCostumeById

@@ -11,7 +11,6 @@ getTagById = (id) => {
 createTag = (tag) => {
   return knex('tags')
   .insert(body).returning('*')
-
   .catch((err) => {
     console.error(err)
     knex.destroy()
@@ -30,7 +29,6 @@ editTag = (id, body) => {
     tags: body.tags
   })
   .returning('*')
-
   .catch((err) => {
     console.error(err)
     knex.destroy()
@@ -43,7 +41,6 @@ deleteTagById = (id) => {
   .where('id', id)
   .del()
   .returning('*')
-
   .catch((err) => {
     console.error(err)
     knex.destroy()

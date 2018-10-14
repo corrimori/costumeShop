@@ -8,21 +8,27 @@ getCostumeById = (id) => {
   return knex('costumes').where('id', id)
 }
 
+getCostumeWithNestedTags = () => {
+  return knex('costumes')
+    .then(costumes => {
+      console.log('@@@@@@@@@@@@ in queries')
+      const promises = costumes.map(costume => {
+        return knex('costume_tags')
+        join('tags', 'tags.id', 'costume_tags.tag_id')
+        .where('costume_tags.costume_id', costume.id)
+        .then(tags => {
+          costume.tags = tags
+          console.log('tags----->', tags)
+          return costume
+        })
+      })
+      return Promise.all(promises)
+    })
+}
+
 createCostume = (body) => {
   return knex('costumes')
   .insert(body).returning('*')
-  // don't have to write the entire object-- replace with (body)
-  // .insert({
-  //   name: body.name,
-  //   price: body.price,
-  //   description: body.description,
-  //   tags: body.tags
-  // })
-
-  // .then((result) => {
-  //   console.log(result);
-  //   knex.destroy();
-  // })
   .catch((err) => {
     console.error(err)
     knex.destroy()
@@ -41,10 +47,6 @@ updateCostume = (id, body) => {
     tags: body.tags
   })
   .returning('*')
-// .then((result) => {
-  //   console.log(result);
-  //   knex.destroy();
-  // })
   .catch((err) => {
     console.error(err)
     knex.destroy()
@@ -57,11 +59,6 @@ deleteCostumeById = (id) => {
     .where('id', id)
     .del()
     .returning('*')
-
-    // .then((result) => {
-    //   console.log(result);
-    //   knex.destroy();
-    // })
     .catch((err) => {
       console.error(err)
       knex.destroy()
@@ -72,6 +69,7 @@ deleteCostumeById = (id) => {
 module.exports = {
   getAllCostumes,
   getCostumeById,
+  getCostumeWithNestedTags,
   createCostume,
   updateCostume,
   deleteCostumeById

@@ -25,7 +25,7 @@ getTagById = (req, res, next) => {
   })
 }
 
-createCostume = (req, res, next) => {
+createTag = (req, res, next) => {
   let promise = model.createTag(req.body)
 
   promise.then(result => {

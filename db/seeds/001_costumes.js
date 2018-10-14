@@ -7,45 +7,45 @@ exports.seed = function(knex, Promise) {
       return knex('costumes').insert([
         {
           id: 1,
-          name: 'Carl',
+          name: 'Disco Outfit',
           price: 3500,
           description: 'sparkle glitter fun',
-          tags: "['bold', 'sale']"
+          // tags: "['bold', 'sale']"
         },
         {
           id: 2,
-          name: 'Jon',
+          name: 'Superman',
           price: 500,
           description: 'bold red cape adds strength',
-          tags: "['bold', 'sale']"
+          // tags: "['bold', 'sale']"
         },
         {
           id: 3,
-          name: 'Glen',
+          name: 'Spiderman',
           price: 2500,
           description: 'stretchy spandex',
-          tags: "['bold', 'sale']"
+          // tags: "['bold', 'sale']"
         },
         {
           id: 4,
           name: 'Panda',
           price: 4500,
-          description: 'panda',
-          tags: "['bold', 'sale']"
+          description: 'cute black and white outfit',
+          // tags: "['bold', 'sale']"
         },
         {
           id: 5,
-          name: 'Tom',
+          name: 'Witch',
           price: 500,
-          description: 'spotted fur',
-          tags: "['bold', 'sale']"
+          description: 'black dress including pointy hat',
+          // tags: "['bold', 'sale']"
         },
         {
           id: 6,
-          name: 'Michael',
+          name: 'Harry Potter',
           price: 500,
-          description: 'thegodfather',
-          tags: "['bold', 'sale']"
+          description: 'wizardly magic',
+          // tags: "['bold', 'sale']"
         }
       ])
     })
