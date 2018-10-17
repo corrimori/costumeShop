@@ -4,7 +4,6 @@ const getAllCostumes = () => {
   costumes = costumesQuery.getAllCostumes()
 
   return costumes.then(result => {
-    console.log('result in models---->', result);
     return result.length < 1
       ? { error: 'error retreiving costumes', status: 404 }
       : result
